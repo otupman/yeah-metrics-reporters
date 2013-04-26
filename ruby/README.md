@@ -5,7 +5,7 @@
 The ruby reporter parses SimpleCov CSV output and metric_fu report data, so you need the following gems to be run first:
 
 * [simplecov](https://github.com/colszowka/simplecov) + [simplecov-csv](https://github.com/fguillen/simplecov-csv)
-* metric_fu
+* [metric_fu](https://rubygems.org/gems/metric_fu)
 * [keen](://github.com/keenlabs/keen-gem)
 
 In addition, you need a [Keen.io](http://keen.io) project to report to.
