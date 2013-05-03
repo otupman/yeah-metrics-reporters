@@ -2,16 +2,18 @@ var fs = require('fs'),
     xml2js = require('xml2js'),
     keen = require('keen.io');
 
-var api = keen.api("YOUR_API_TOKEN");
-var projectToken = "YOUR_PROJECT_TOKEN";
-
-if(process.argv.length < 4) {
-    console.log("Usage: node yeah-metrics.js /path/to/jshint.xml /path/to/cobertura-coverage.xml");
+if(process.argv.length < 6) {
+    console.log("Usage: node yeah-metrics.js YOUR_KEEN_IO_API_KEY YOUR_KEEN_IO_PROJECT_ID /path/to/jshint.xml /path/to/cobertura-coverage.xml");
     process.exit();
 }
 
+var api = keen.api(process.argv[2]);
+var projectToken = process.argv[3];
 var parser = new xml2js.Parser();
-fs.readFile(process.argv[2], function(err, data) {
+
+// Go!
+
+fs.readFile(process.argv[4], function(err, data) {
     parser.parseString(data, function (err, result) {
         var errors = 0;
         for(var i=0;i<result.checkstyle.file.length;i++) {
@@ -32,7 +34,7 @@ fs.readFile(process.argv[2], function(err, data) {
 });
 
 var parser = new xml2js.Parser();
-fs.readFile(process.argv[3], function(err, data) {
+fs.readFile(process.argv[5], function(err, data) {
   parser.parseString(data, function(err, result) {
     if(err) {
       console.error("Sorry, cannot find coverage XML.");
