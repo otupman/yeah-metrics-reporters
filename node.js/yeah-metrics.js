@@ -7,8 +7,10 @@ if(process.argv.length < 6) {
     process.exit();
 }
 
-var api = keen.api(process.argv[2]);
-var projectToken = process.argv[3];
+var api = keen.configure({
+    projectId: process.argv[3],
+    writeKey: process.argv[2]
+});
 var parser = new xml2js.Parser();
 
 // Go!
@@ -21,7 +23,7 @@ fs.readFile(process.argv[4], function(err, data) {
            errors++;
         }
 
-        api.events.insert(projectToken, [{collection: "code_style", data: { score: errors, language: "javascript" }}], function(err, res) {
+        api.addEvent("code_style", { score: errors, language: "javascript" }, function(err, res) {
             if(err) {
                 console.error("Sending data failed:" , err, res);
             } else {
@@ -40,7 +42,13 @@ fs.readFile(process.argv[5], function(err, data) {
       console.error("Sorry, cannot find coverage XML.");
     } else {
       coverage = result.coverage["$"]["line-rate"] * 100.0;
-      api.events.insert(projectToken, [{collection: "coverage", data: {score: coverage, language: "javascript"}}]);
+      api.addEvent("coverage", {score: coverage, language: "javascript" }, function(err, res) {
+        if(err) {
+          console.error("Sending data failed:" , err, res);
+        } else {
+          console.info("Data sent to backend.");
+        }      
+      });
       console.log("Done, coverage is " + coverage + "%");
     }
   });
