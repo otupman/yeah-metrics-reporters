@@ -1,7 +1,7 @@
 require 'keen'
 require 'yaml'
 require 'csv'
-
+require 'pry'
 
 YAML::ENGINE.yamler = 'syck'
 
@@ -24,7 +24,12 @@ CSV.foreach(ARGV[1]) do |row|
     coverage_covered_lines = coverage_covered_lines + row[4].to_i
 end
 
+score = 100.0 * (coverage_covered_lines.to_f / coverage_relevant_lines.to_f)
+if score.nan?
+  score = 0.0
+end
+
 Keen.publish("code_style", { :language => "ruby", :score => roodi_score })
 Keen.publish("code_smells", { :language => "ruby", :score => reek_code_smells})
 Keen.publish("code_to_test_ratio", { :language => "ruby", :score => code_to_test_ratio })
-Keen.publish("coverage", { :language => "ruby", :score => 100.0 * (coverage_covered_lines.to_f / coverage_relevant_lines.to_f) })
+Keen.publish("coverage", { :language => "ruby", :score => score })
