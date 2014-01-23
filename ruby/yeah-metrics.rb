@@ -1,7 +1,6 @@
 require 'keen'
 require 'yaml'
 require 'csv'
-require 'pry'
 
 YAML::ENGINE.yamler = 'syck'
 
