@@ -13,6 +13,15 @@ metric_data = YAML.load_file(ARGV[0])
 roodi_score = metric_data[:roodi][:total][0].match(/\d+/).values_at(0)[0].to_i
 reek_code_smells = metric_data[:reek][:matches].reduce(0) { |sum, file| sum + file[:code_smells].size }
 
+cloc_data_result_file = "coverage/cloc_result.yaml"
+
+if File.exist?(cloc_data_result_file)
+	cloc_data = YAML.load_file(cloc_data_result_file)
+	cloc_data_result_sum = cloc_data["SUM"]["code"]
+else 
+	cloc_data_result_sum = 0
+end	
+
 code_to_test_ratio = metric_data[:stats][:code_to_test_ratio]
 
 coverage_relevant_lines = 0
@@ -28,6 +37,7 @@ if score.nan?
   score = 0.0
 end
 
+Keen.publish("cloc_sum", { :score => cloc_data_result_sum })
 Keen.publish("code_style", { :language => "ruby", :score => roodi_score })
 Keen.publish("code_smells", { :language => "ruby", :score => reek_code_smells})
 Keen.publish("code_to_test_ratio", { :language => "ruby", :score => code_to_test_ratio })
