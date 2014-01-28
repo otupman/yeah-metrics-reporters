@@ -1,0 +1,200 @@
+---
+:flay:
+  :total_score: '0'
+  :matches: []
+:churn:
+  :changes: []
+  :class_churn: []
+  :method_churn: []
+  :changed_files:
+  - spec/spec_helper.rb
+  :changed_classes: []
+  :changed_methods: []
+:flog:
+  :total: 4.0
+  :average: 4.0
+  :method_containers:
+  - :name: ApplicationController
+    :path: ''
+    :total_score: 4.0
+    :highest_score: 4.0
+    :average_score: 4.0
+    :methods:
+      ApplicationController#none:
+        :operators:
+          :include: 4.0
+        :score: 4.0
+        :path: 
+:cane:
+  :total_violations: 1
+  :violations:
+    :line_style:
+    - :line: spec/spec_helper.rb:8
+      :description: Line contains trailing whitespace
+:roodi:
+  :total:
+  - "\e[32mFound 0 errors.\e[0m"
+  :problems:
+  - :file: Running Roodi checks
+    :line: 
+    :problem: 
+  - :file: Checked 1 files
+    :line: 
+    :problem: 
+:saikuro:
+  :files:
+  - :classes:
+    - :class_name: ApplicationController
+      :complexity: 0
+      :lines: 4
+      :methods: []
+    :filename: app/controllers/application_controller.rb
+  :classes:
+  - :name: ApplicationController
+    :complexity: 0
+    :lines: 4
+  :methods: []
+:stats:
+  :codeLOC: 4
+  :testLOC: 6
+  :code_to_test_ratio: 1.5
+  :lines:
+  - :name: Controllers
+    :lines: 5
+    :loc: 4
+    :classes: 1
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Models
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Mailers
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Libraries
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Controller tests
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Helper tests
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Model tests
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Mailer tests
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Integration tests
+    :lines: 0
+    :loc: 0
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Models specs
+    :lines: 7
+    :loc: 6
+    :classes: 0
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+  - :name: Total
+    :lines: 12
+    :loc: 10
+    :classes: 1
+    :methods: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+:reek:
+  :matches:
+  - :file_path: app/controllers/application_controller.rb
+    :code_smells:
+    - :method: ApplicationController
+      :message: has no descriptive comment
+      :type: IrresponsibleModule
+:rails_best_practices:
+  :total:
+  - Found 0 errors.
+  :problems:
+:hotspots:
+  files:
+  - location:
+      class_name: 
+      method_name: 
+      file_path: Running Roodi checks
+      file_name: Running Roodi checks
+      line_number: 
+      hash_key: '["Running Roodi checks", nil, nil]'
+    details:
+      roodi: found 1 design problems
+  - location:
+      class_name: 
+      method_name: 
+      file_path: Checked 1 files
+      file_name: Checked 1 files
+      line_number: 
+      hash_key: '["Checked 1 files", nil, nil]'
+    details:
+      roodi: found 1 design problems
+  - location:
+      class_name: 
+      method_name: 
+      file_path: app/controllers/application_controller.rb
+      file_name: app/controllers/application_controller.rb
+      line_number: 
+      hash_key: '["app/controllers/application_controller.rb", nil, nil]'
+    details:
+      reek: found 1 code smells
+  classes:
+  - location:
+      class_name: ApplicationController
+      method_name: 
+      file_path: 
+      file_name: 
+      line_number: 
+      hash_key: '[nil, "ApplicationController", nil]'
+    details:
+      flog: complexity is 4.0
+      reek: found 1 code smells
+  methods:
+  - location:
+      class_name: ApplicationController
+      method_name: ApplicationController#none
+      file_path: 
+      file_name: 
+      line_number: 
+      hash_key: '[nil, "ApplicationController", "ApplicationController#none"]'
+      simple_method_name: '#none'
+    details:
+      flog: complexity is 4.0
