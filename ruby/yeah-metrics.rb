@@ -21,6 +21,7 @@ if File.exist?(cloc_data_result_file)
 else 
 	cloc_data_result_sum = 0
 end	
+puts "CLOC = #{cloc_data_result_sum}"
 
 code_to_test_ratio = metric_data[:stats][:code_to_test_ratio]
 
